@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>self made chat application</title>
+</head>
+<style>
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: flexbox;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+h2 {
+    color: #3498db;
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 80%;
+    max-width: 400px;
+}
+
+li {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+.user-message {
+    background-color: #3498db;
+    color: #fff;
+    border-radius: 10px 10px 0 10px;
+    padding: 10px;
+    max-width: 70%;
+}
+
+input {
+    width: 40%;
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 10px; /* Move input to the bottom */
+    box-sizing: border-box;
+    border: 1px solid #3498db;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+.unsend-button {
+    size: 20px; /* Smaller size for unsend button */
+    font-size: 14px;
+}
+#render{
+    padding: 0px 9px;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: red;
+    color: black;
+    margin-left: 7px;
+}
+#messages{
+    background-color: aqua;
+    margin-left: 300px;
+}
+</style>
+<body>
+    <h2>CHAT APPLICATION</h2>
+    <ul id="messages"></ul>
+    <input type="text" id="mssg">
+    <button onclick="SEND()">send</button>
+    <script>
+        function SEND() {
+            console.log("got the message");
+            var baap = document.getElementById("messages");
+            var add = document.getElementById("mssg").value;
+            var bachha = document.createElement('li');
+            bachha.innerHTML = `
+          <span>${add}</span> <button onclick="unsend(this)" id="render">x</button><br>`;
+            baap.appendChild(bachha);
+            add = "";
+        }
+        function unsend(button) {
+            var listItem = button.parentNode;
+            var tasksList = document.getElementById("messages");
+            tasksList.removeChild(listItem);
+        }
+    </script>
+</body>
+
+</html>
